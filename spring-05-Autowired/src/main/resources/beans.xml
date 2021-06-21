@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--   1.开启注解-->
+    <context:annotation-config/>
+
+        <bean id="cat" class="com.q.pojo.Cat"/>
+        <!--    测试-->
+        <bean id="cat1" class="com.q.pojo.Cat"/>
+        <bean id="dog1" class="com.q.pojo.Dog"/>
+        <bean id="dog" class="com.q.pojo.Dog"/>
+
+    <context:component-scan base-package="com.q.pojo"/>
+    <!--        <bean id="dog1" class="com.q.pojo.Dog"/>-->
+
+    <!--        xml显示装配-->
+    <!--    <bean id="person" class="com.q.pojo.Person">-->
+    <!--        <property name="name" value="小林"/>-->
+    <!--        <property name="cat" ref="cat"/>-->
+    <!--        <property name="dog" ref="dog"/>-->
+    <!--    </bean>-->
+
+    <!--自动装配-->
+    <!--    方式1：ByName-->
+    <!--        <bean id="person" class="com.q.pojo.Person" autowire="byName">-->
+    <!--                        <property name="name" value="小林"/>-->
+    <!--        </bean>-->
+
+    <!--    方式2：ByType -->
+    <!--    测试 BYType-->
+
+    <!--    <bean id="person" class="com.q.pojo.Person" autowire="byType">-->
+    <!--        <property name="name" value="小林"/>-->
+    <!--    </bean>-->
+
+    <!--    注解自动装配-->
+    <!--    <bean id="person" class="com.q.pojo.Person">-->
+    <!--        <property name="name" value="小林"/>-->
+    <!--    </bean>-->
+</beans>

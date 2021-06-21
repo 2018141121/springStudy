@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--   把实现类注入到spring 容器里面-->
+    <bean id="myBean" class="com.q.dao.UserDaoImpl"/>
+    <bean id="mysqlBean" class="com.q.dao.UserMysqlImpl"/>
+    <bean id="myBean2" class="com.q.service.UserServiceImpl">
+        <!--
+                ref:引用spring容器中创建好的bean对象
+                value:具体的的值，基本数据类型
+
+                这个东西就是给用户进行修改的，
+                -->
+        <property name="userDao" ref="mysqlBean"/>
+    </bean>
+
+</beans>

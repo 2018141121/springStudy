@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+        <!--使用spring创建对象，在spring中都叫做bean
+
+        传统：
+        类型 变量名 =new 类型()
+
+        spring容器：
+        bean = new一个对象  new hello()
+
+        id = 变量名
+        class = 相当于new的对象
+        property = 相当于给对象中的属性设置一个值
+
+        -->
+    <!--这里的id，相当于new了一个对象，也就是说把对象都放在这里面了，调用的时候只需要，getBean就可以了-->
+    <bean id="hello" class="com.q.pojo.Hello">
+
+        <property name="string" value="spring"/>
+
+    </bean>
+</beans>

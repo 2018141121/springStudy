@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="beans.xml"/>
+    <!--P(属性: properties)命名空间 , 属性依然要设置set方法-->
+    <!--    p->property  单例模式 -->
+    <!--p命名空间注入 可以直接注入属性的值  p就是属性p-->
+    <bean id="user0" class="com.q.pojo.User" p:name="lin" p:age="20"/>
+
+    <!--C(构造: Constructor)命名空间 , 属性依然要设置set方法-->
+    <!--    c->constructor-arg 作用域 为Prototype 也就是作用域为原型模式 -->
+    <bean id="user2" name="user" class="com.q.pojo.User" c:age="10" c:name="ljq" scope="prototype"/>
+
+</beans>

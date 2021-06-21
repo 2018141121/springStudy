@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    //这是有参构造-->
+    <bean id="user" class="com.q.pojo.User">
+        <!--        使用无参数构造创建对象的方式-->
+        <!--        <property name="name" value="lin"/>-->
+
+        <!--     使用有参数构造方式创建对象的三种方式-->
+        <!--    方式一     下标赋值-->
+        <!--        <constructor-arg index="0" value="lin"/>-->
+
+        <!--        方式二 根据参数类型设置 这样有问题，不建议使用 当有两个类型相同就会错误-->
+        <!--        <constructor-arg type="java.lang.String" value="林"/>-->
+
+        <!--        方式三 根据参数名称设置 这种方式比较好-->
+        <constructor-arg name="name" value="hello"/>
+    </bean>
+
+    <!-- 这是无参构造-->
+    <bean id="user2" class="com.q.pojo.User2" name="user22">
+        <property name="name" value="第二种被创建"/>
+    </bean>
+    <!--    <alias name="user" alias="别名"/>-->
+</beans>

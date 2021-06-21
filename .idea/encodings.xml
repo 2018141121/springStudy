@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK">
+    <file url="file://$PROJECT_DIR$/spring-10-mybatis/src/main/resources/log4j.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-11-transaction/src/main/java/com/q/Mapper/UserMapperImpl02.java" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

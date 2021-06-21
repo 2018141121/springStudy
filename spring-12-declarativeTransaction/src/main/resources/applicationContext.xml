@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--    数据库的信息配置完成后就开始第二步-->
+    <import resource="spring-dao.xml"/>
+
+    <!--    实现类注入spring里面  这个一步很重要  ,相当于人放进模板工作-->
+    <bean id="userMapperImpl02" class="com.q.Mapper.UserMapperImpl02">
+        <property name="sqlSessionTemplate" ref="sqlSessionTemplate22"/>
+    </bean>
+    <bean class="com.q.pojo.User" id="user"/>
+</beans>

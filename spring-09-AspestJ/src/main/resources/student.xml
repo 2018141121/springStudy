@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--  练习-->
+
+    <!--   定义目标类-->
+    <bean id="student" class="com.q.service.StudentImpl"/>
+    <!--    定义切面类-->
+    <bean id="studentAspect" class="com.q.Aspect.StudentAspect"/>
+
+    <!--    切面配置-->
+    <aop:config>
+        <!--       1. 配置切面 将studentAspect的类标志为切面类 -->
+        <aop:aspect ref="studentAspect">
+            <!--            2.配置切入点-->
+            <aop:pointcut id="myPointcut" expression="execution(* com.q.service.*.*(..))"/>
+            <!--            3.织入通知-->
+            <aop:before method="login" pointcut-ref="myPointcut"/>
+            <aop:after method="log" pointcut-ref="myPointcut"/>
+        </aop:aspect>
+
+    </aop:config>
+</beans>

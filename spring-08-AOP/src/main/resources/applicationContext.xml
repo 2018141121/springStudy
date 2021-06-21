@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--基于代理类的AOP实现 第四步：写配置文件的xml文件-->
+    <!--1.目标类  装配到容器-->
+    <bean id="userDao" class="com.q.service.UserService01Impl"/>
+    <!--2.切面类    -->
+    <bean id="surround" class="com.q.Aspect.Surround"/>
+
+    <!--    3.使用spring代理工厂ProxyFactoryBean定义一个名称为userDaoProxy的代理对象-->
+    <bean id="userDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--        3.1指定代理实现接口-->
+        <property name="proxyInterfaces" value="com.q.service.UserService01"/>
+        <!--        3.2指定目标对象-->
+        <property name="target" ref="userDao"/>
+        <!--        3.3指定切面，织入环绕通知 也就是切面类-->
+        <property name="interceptorNames" value="surround"/>
+        <!--        3.4指定代理方式，true ：使用cglib      false：（默认） 使用jdk代理-->
+        <property name="proxyTargetClass" value="false"/>
+    </bean>
+</beans>

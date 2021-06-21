@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--用这个配置文件代替mybatis的配置文件和他的工具类-->
+
+    <!--    第一步：连接数据库-->
+    <!--    1.读取我配置的数据库信息-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!--    2.配置数据库 也就是将我的数据库信息配置到数据库驱动管理源里面-->
+
+    <!--这个数据源是任意的数据源 连接池  驱动程序管理器数据源-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+
+    <!--    第二步：配置工厂，生成能够处理sql语句的sqlSessionTemplate对象 也就是mybatis里面的SqlSession -->
+    <!--    事务管理器，依赖于数据源-->
+
+    <!--配置SqlSessionFactory 也就是配置mybatis工厂 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--        注入数据库的信息-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--关联Mybatis-->
+        <!--        找到mybatis的配置文件-->
+        <!--        这一步是指定mybatis的xml配置文件的路径-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--        找到mapper的配置文件，也就是sql语句的映射位置-->
+        <property name="mapperLocations" value="classpath:com/q/Mapper/*.xml"/>
+    </bean>
+
+    <!--    第三步：配置模板  看是否需要模板，不需要不用配置也可以-->
+    <!--注册sqlSessionTemplate , 关联sqlSessionFactory 也就是mybatis里面的sqlSession对象-->
+
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <!--利用构造器注入 把这个对象关联到工厂  相当于工人进去工厂-->
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+
+</beans>
+
